@@ -4,7 +4,7 @@
       <DatePicker v-on:getData="getDateOn" />
       <InputStation v-on:getData="getFromStation" direction="From" />
       <InputStation v-on:getData="getToStation" direction="To" />
-      <button class="get-trains-btn" v-on:click="getPosts">
+      <button class="get-trains-btn btn--stripe" v-on:click="getPosts">
         Get Trains
       </button>
     </div>
@@ -43,7 +43,6 @@ export default {
   },
   methods: {
     async getPosts () {
-      // console.log(this.date, this.stationFrom);
       if (this.stationFrom === this.stationTo) return alert('Same station!');
       if (!this.date) return alert('Check date!');
       const stationFromId = stationsNumber.find(i => i[this.stationFrom])[this.stationFrom];
@@ -52,6 +51,9 @@ export default {
       const response = await PostsService.getTrains(query);
       if (response.data.error) {
         return this.error = response.data.data;
+      }
+      if (!response.data.length) {
+        return this.error = 'Sorry, nothing found. :(';
       }
       this.error = '';
       this.trains = response.data;
@@ -68,22 +70,3 @@ export default {
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.station-piker::-webkit-calendar-picker-indicator {
-  display: none;
-}
-.get-trains-btn {
-  border: 1px solid grey;
-  border-radius: 4px;
-  height: 30px;
-  user-select: none;
-  cursor: pointer;
-  outline: none;
-}
-.data-wrapper {
-  display: flex;
-  justify-content: space-between;
-}
-</style>

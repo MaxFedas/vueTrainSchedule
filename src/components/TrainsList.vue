@@ -1,7 +1,7 @@
 <template>
   <div>
     <ScheduleHeader />
-    <div v-for="train in trains">
+    <div v-for="train in trains" :key="train.num">
       <div class="schedule-header">
         <div class="header-item"><b>{{ train.num }}</b></div>
         <div class="header-item item-date">
@@ -18,7 +18,7 @@
         </div>
         <div class="header-item">{{ train.travelTime }}</div>
         <div class="header-item no-border">
-          <div v-for="place in train.types">
+          <div v-for="place in train.types" :key="place.id">
             <div>{{ place.id }}: {{ place.places }}</div>
           </div>
         </div>
@@ -40,25 +40,3 @@ export default {
   },
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1 {
-  cursor: pointer;
-  user-select: none;
-}
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
