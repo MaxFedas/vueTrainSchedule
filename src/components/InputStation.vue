@@ -3,7 +3,7 @@
     {{ direction }}:
     <input type="text" v-model="station" list="stations" class='station-piker' v-on:change="passData">
     <datalist id="stations">
-      <option v-for="station in stationsNumber" :key="station" >{{ Object.keys(station)[0] }}</option>
+      <option v-for="station in stationsNumber" :key="Object.keys(station)[0]" >{{ Object.keys(station)[0] }}</option>
     </datalist>
   </div>
 </template>
