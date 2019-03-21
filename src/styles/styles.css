@@ -1,4 +1,127 @@
 /* Global styles for project */
 body {
-  background-color: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 20px;
+  background: grey url('../assets/background-image.jpeg') 0 0 / 100%  no-repeat;
+}
+
+#app {
+  width: 100%;
+  min-width: 740px;
+  color: #ffb400;
+  font-family: Titillium Web, sans-serif;
+}
+
+h1 {
+  margin-bottom: 40px;
+  background-color: grey;
+}
+
+@keyframes stripe-slide {
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+.get-trains-btn {
+  height: 35px;
+  padding-bottom: 15px;
+  border-radius: 6px;
+  background-color: #ffb400;
+  border-color: black;
+  text-transform: uppercase;
+  font-family: Titillium Web, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn--stripe {
+  overflow: hidden;
+  position: relative;
+}
+
+.btn--stripe:after {
+  content: '';
+  display: block;
+  height: 7px;
+  width: 100%;
+  background-image: repeating-linear-gradient(45deg, #666, #666 1px, transparent 2px, transparent 5px);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-top: 1px solid #666;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-size: 7px;
+}
+
+.btn--stripe:hover {
+  background-color: #ff6700;
+  color: #fff;
+  border-color: #000;
+}
+
+.btn--stripe:hover:after {
+  background-image: repeating-linear-gradient(45deg, #fff, #fff 1px, transparent 2px, transparent 5px);
+  border-top: 1px solid #000;
+  animation: stripe-slide 12s infinite linear forwards;
+}
+
+.data-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 45px;
+  margin-bottom: 20px;
+  background-color: grey;
+  font-weight: bold;
+}
+
+.data-wrapper > div > input, input.station-piker {
+  padding-left: 10px;
+  border-color: #ff6700;
+  font-family: Titillium Web, sans-serif;
+  outline: none;
+}
+
+.schedule-header, .header-item {
+  display: flex;
+  justify-content: center;
+  border: 1px solid #ff6700;
+  background-color: rgba(211,211,211, 0.5);
+  color: black;
+  font-family: 'Jura', sans-serif;
+}
+
+.schedule-header {
+  min-height: 35px;
+  width: 100%;
+}
+
+.header-item {
+  flex-direction: column;
+  padding: 5px;
+  width: 12%;
+}
+
+.header-item > div {
+  display: flex;
+  margin-left: 10px;
+}
+
+.item-date {
+  width: 26%;
+}
+
+.error-message {
+  color: #ff6700;
+  font-size: 22px;
+  font-weight: 500;
 }

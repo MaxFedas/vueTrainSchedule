@@ -8,7 +8,7 @@
         Get Trains
       </button>
     </div>
-    <div v-if="error">
+    <div class="error-message" v-if="error">
       {{ error }}
     </div>
     <div v-else>
